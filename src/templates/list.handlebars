@@ -1,17 +1,15 @@
-{{> header }}
 <div class="page list">
-  <h1>{{title}}</h1>
   <div class="body">
     {{#if loading}}
       Loading data, please wait...
     {{else}}
     <ul>
-      {{#each posts}}
-        <li>{{this.title}}</li>
+      {{#each koten}}
+        <li><a href="/detail?id={{key}}" data-navigo><img src="http://studentlife.be/wp-content/uploads/2016/05/LIFE_Electri_City_kamer_HR-600x600.jpg" alt=""><p>{{this.straat}}</p><p>{{this.oppervlakte}}</p><p>{{this.huurprijs}}</p></a></li>
       {{/each}}
     </ul>
     {{/if}}
-    Go to <a href="/" data-path>Home page</a>
+    
   </div>
 </div>
 {{> footer }}

@@ -1,22 +1,4 @@
 @import "../../node_modules/mapbox-gl/dist/mapbox-gl.css"
-// Generic styling
-body
-    font-size: 12px
-    margin: 0 auto
-    background: #fefefe
-    height: 100vh
-    #app
-        height: 100%
-        position: relative
-    #map
-        top: 0
-        bottom: 0
-        width: 500px
-        height: 200px
-        text-align: initial
-        margin: 0 auto
-
-
 // general
 @import "./colors"
 @import "./page"
@@ -25,3 +7,50 @@ body
 
 // pages
 @import "./about"
+@import "./home"
+@import "./student"
+@import "./list"
+
+// Generic styling
+body
+    font-family: $base-font-family
+    font-size: 14px
+    margin: 0 auto
+    background: $background-color
+    height: 100%
+    #app
+        height: 100%
+        position: relative
+    #map
+        top: 0
+        bottom: 0
+        width: 320px
+        height: 550px
+        text-align: initial
+        margin: 0 auto
+    
+    #marker
+        background-color: black
+        width: 50px
+        height: 50px
+        border-radius: 50%
+        cursor: pointer
+
+    .mapboxgl-popup
+        max-width: 200px
+
+    ul
+        list-style-type: none
+        margin: 0
+        padding: 0
+    
+    
+h1, h2, h3, h4, h5, h6
+    font-family: $headings-font-family
+
+h1
+    font-size: 36px
+
+h2
+    font-size: 28px
+

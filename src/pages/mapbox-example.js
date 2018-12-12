@@ -6,6 +6,7 @@ import config from '../config';
 // Import the update helper
 import update from '../helpers/update';
 
+const functions = require('../functions');
 // Import the template to use
 const mapTemplate = require('../templates/page-with-map.handlebars');
 
@@ -20,10 +21,15 @@ export default () => {
     // eslint-disable-next-line no-unused-vars
     const map = new mapboxgl.Map({
       container: 'map',
-      center: [-74.50, 40],
+      center: [3.716, 51.05],
       style: 'mapbox://styles/mapbox/streets-v9',
-      zoom: 1,
+      zoom: 11,
     });
+
+    map.addControl(new mapboxgl.NavigationControl());
+
+    functions.addMarkers(mapboxgl, map);
+    
   } else {
     console.error('Mapbox will crash the page if no access token is given.');
   }

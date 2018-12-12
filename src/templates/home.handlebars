@@ -1,11 +1,11 @@
 {{> header }}
 <div class="page home">
-  <h1>Hello, {{user}}!</h1>
-  <div class="body">
-    This is Home page.<br>
-    Go to <a href="/about" data-path>About page</a><br />
-    Go to <a href="/firebase" data-path>Firebase example page</a><br />
-    Go to <a href="/mapbox" data-path>Mapbox example page</a><br />
-  </div>
+  <form >
+      <input type="email" name="login_email" id="login_email" placeholder="Login">
+        <input type="password" name="login_password" id="login_password" placeholder="Wachtwoord">
+        <a id="linkSignup" href="#signup">Nog geen account?</a>
+        <button type="button" id="button_login">Inloggen</button>
+  </form>
+  <p class="error" id="login_error"></p>
 </div>
 {{> footer }}

@@ -1,41 +1,51 @@
-{{> header }}
+{{> header}}
 <div class="page owner">
-  <h2 id="user_info"></h2>
+  <p id="user_info"></p>
   <h2>Mijn kot</h2>
-  <form action="">
+  <form id="kot_form" action="">
     <input type="text" name="kot_straat" id="kot_straat" placeholder="Straat + nr" pattern="[A-Za-z0-9]" minlength="2" maxlength="40" required>
     <input type="text" name="kot_plaats" id="kot_plaats" placeholder="Postcode + plaats" pattern="[A-Za-z0-9]" minlength="2" maxlength="30" required>
     <input type="number" name="kot_huurprijs" id="kot_huurprijs" placeholder="Huurprijs" pattern="[0-9]" min="0" maxlength="5" required>
-    <input type="number" name="kot_waarborg" id="kot_waarborg" placeholder="Waarborg" pattern="[0-9]" min="2" maxlength="5" required>
-    <label for="kot_type">Type kot:</label>
-    <select name="kot_type" id="kot_type">
-      <option value="Kamer">Kamer</option>
-      <option value="Studio">Studio</option>
-    </select>
+    <input type="number" name="kot_waarborg" id="kot_waarborg" placeholder="Waarborg" pattern="[0-9]" min="0" maxlength="5" required>
+    <div class="input">
+      <label for="kot_type">Type kot:</label>
+      <select name="kot_type" id="kot_type">
+        <option value="Kamer">Kamer</option>
+        <option value="Studio">Studio</option>
+      </select>
+    </div>
     <input type="number" name="kot_opp" id="kot_opp" placeholder="Oppervlakte" pattern="[0-9]" min="5"  required>
     <input type="number" name="kot_verdieping" id="kot_verdieping" placeholder="Verdieping" pattern="0|1|2" max="2" min="0" required>
-    <label for="kot_toilet">Privé toilet?</label>
-    <select name="kot_toilet" id="kot_toilet">
-      <option value="Ja">Ja</option>
-      <option value="Nee">Nee</option>
-    </select>
-    <label for="kot_douche">Privé douche?</label>
-    <select name="kot_douche" id="kot_douche">
-      <option value="Ja">Ja</option>
-      <option value="Nee">Nee</option>
-    </select>
-    <label for="kot_keuken">Privé keuken?</label>
-    <select name="kot_keuken" id="kot_keuken">
-      <option value="Ja">Ja</option>
-      <option value="Nee">Nee</option>
-    </select>
-    <label for="kot_meubels">Meubels aanwezig?</label>
-    <select name="kot_meubels" id="kot_meubels">
-      <option value="">Ja</option>
-      <option value="Bemeubeld">Nee</option>
-    </select>
-    <button id="submitBtn" type="button">Kot toevoegen</button>
+    <div class="input">
+      <label for="kot_toilet">Privé toilet?</label>
+      <select name="kot_toilet" id="kot_toilet">
+        <option value="Ja">Ja</option>
+        <option value="Nee">Nee</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="kot_douche">Privé douche?</label>
+      <select name="kot_douche" id="kot_douche">
+        <option value="Ja">Ja</option>
+        <option value="Nee">Nee</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="kot_keuken">Privé keuken?</label>
+      <select name="kot_keuken" id="kot_keuken">
+        <option value="Ja">Ja</option>
+        <option value="Nee">Nee</option>
+      </select>
+    </div>
+    <div class="input">
+      <label for="kot_meubels">Meubels aanwezig?</label>
+      <select name="kot_meubels" id="kot_meubels">
+        <option value="">Ja</option>
+        <option value="Bemeubeld">Nee</option>
+      </select>
+    </div>
+    
+    <button id="submitBtn" type="submit">Kot toevoegen</button>
   </form>
-  
+  <button id="addBtn" type="button"><i class="fas fa-plus fa-lg"></i></button>
 </div>
-{{> footer }}

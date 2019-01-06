@@ -1,10 +1,14 @@
 <section class="header">
-
-    <h1>{{title}}</h1>
-    <nav>
-        <ul>
-            <li></li>
-        </ul>
+    <!-- Top Navigation Menu -->
+    <nav class="topnav">
+        <a href="/student" class="active" data-navigo>{{title}}</a>
+        <!-- Navigation links (hidden by default) -->
+        <div id="myLinks">
+            {{links}}
+        </div>
+        <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+        <a class="icon" >
+            <i class="fas fa-bars fa"></i>
+        </a>
     </nav>
-
 </section>

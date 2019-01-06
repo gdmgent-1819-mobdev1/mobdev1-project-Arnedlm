@@ -1,30 +1,35 @@
-import { compile } from 'handlebars';
+import handlebars, { compile } from 'handlebars';
 import update from '../helpers/update';
-import mapbox from 'mapbox-gl-geocoder';
-import config from '../config';
 
-var Mapbox = require('mapbox-gl-geocoder');
+//Import functions file
+const functions = require('../functions');
 
-const f = require('../functions');
+// Import the template to use
 const kotenTemplate = require('../templates/student.handlebars');
 
-const { getInstance } = require('../firebase/firebase');
+export default () => {  
+    //Check user
+    functions.checkUserRights("student");  
 
-const firebase = getInstance();
-
-export default () => {
-    // Data to be passed to the template
-    const user = 'Test user';
-
-    f.checkUserRights("student");
-    
     // Return the compiled template to the routes
-    update(compile(kotenTemplate)({ user }));
+    update(compile(kotenTemplate)());
 
-    f.fetchAPI();
+    //Update header
+    const header = require('../partials/header.handlebars');
+    handlebars.registerPartial('header', compile(header)({title: 'Dashboard'}));
 
-    
+    //Make navigation
+    //Push links
+    document.getElementById('myLinks').innerHTML ="<a href='/lijst' data-navigo>Lijst</a><a href='#contact'>Contact</a><a href='#about'>About</a>";
+    //Click event menu
+    document.getElementsByClassName("icon")[0].addEventListener("click", () => { functions.menuClickFunction(); });
 
+    //Get data from datatank and check for updated data
+    functions.fetchAPI();
+
+    //Show user info
     let userInfo = document.getElementById("user_info");
-    f.showUserInfo(userInfo);
+    functions.showUserInfo(userInfo);
+    
+    
 };

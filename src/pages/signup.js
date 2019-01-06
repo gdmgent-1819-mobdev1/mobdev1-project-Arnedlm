@@ -1,13 +1,9 @@
 import { compile } from 'handlebars';
 import update from '../helpers/update';
-
+import { validateSignupForm } from '../functions';
 
 // Import the template to use
 const signupTemplate = require('../templates/signup.handlebars');
-
-const { getInstance } = require('../firebase/firebase');
-
-const firebase = getInstance();
 
 const f = require('../functions');
 
@@ -21,8 +17,11 @@ export default () => {
   update(compile(signupTemplate)({ user }));
 
   //code
-  document.getElementById("submitBtn").addEventListener("click", () => {
-    f.signup(firebase)
+  document.addEventListener("input", () => { validateSignupForm(); })
+
+  document.getElementById("submitBtn").addEventListener("click", (e) => {
+    e.preventDefault();
+    f.signup()
   });
   
 

@@ -1,11 +1,13 @@
 {{> header }}
-<div class="page owner">
+<div class="page signup">
   <div class="body">
-    <form id="login"  action="">
-        <input type="text" name="signup_fname" id="signup_fname" placeholder="Voornaam" pattern="[A-Za-z]" minlength="2" maxlength="20" required>
-        <input type="text" name="signup_name" id="signup_name" placeholder="Naam" pattern="[A-Za-z]" minlength="2" maxlength="40"  required>
-        <input type="text" name="signup_address" id="signup_address" placeholder="Straat + nr" pattern="[A-Za-z][0-9]" minlength="2" maxlength="40"  required>
-        <input type="tel" name="signup_phone" id="signup_phone" placeholder="Telefoon" pattern="[0-9]" minlength="2" maxlength="15" required>
+    <form id="login"  action="" novalidate>
+      <div>
+        <input type="text" name="signup_fname" id="signup_fname" placeholder="Voornaam" pattern="([A-Za-z])\w+" minlength="2" required>
+        <input type="text" name="signup_name" id="signup_name" placeholder="Naam" pattern="^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$" minlength="2"  required>
+      </div>
+        <input type="text" name="signup_address" id="signup_address" placeholder="Straat + nr" pattern="([A-Z a-z0-9])\w+" minlength="2" maxlength="40"  required>
+        <input type="tel" name="signup_phone" id="signup_phone" placeholder="Telefoon" pattern="[0-9]{1,9}" minlength="2" maxlength="15" required>
         <select name="school" id="signup_school">
           <option value="noStudent">Geen student</option>
           <option value="uGent">Universiteit Gent</option>
@@ -19,12 +21,12 @@
         <input type="password" name="signup_password" id="signup_password" placeholder="Wachtwoord" required minlength="6">
         
         
-        <button id="submitBtn" type="button">Registreren</button>
+        <button id="submitBtn" type="submit">Registreren</button>
         
     </form>
     
     <p class="error" id="signup_error"></p>
   </div>
-  <script src="../client.js"></script>
+  
 </div>
 {{> footer }}

@@ -1,3 +1,4 @@
+{{> header }}
 <div class="page list">
   <div class="body">
     {{#if loading}}
@@ -5,7 +6,7 @@
     {{else}}
     <ul>
       {{#each koten}}
-        <li><a href="/detail?id={{key}}" data-navigo><img src="http://studentlife.be/wp-content/uploads/2016/05/LIFE_Electri_City_kamer_HR-600x600.jpg" alt=""><p>{{this.straat}}</p><p>{{this.oppervlakte}}</p><p>{{this.huurprijs}}</p></a></li>
+        <li><a href="/detail?{{key}}" data-navigo><img src="http://studentlife.be/wp-content/uploads/2016/05/LIFE_Electri_City_kamer_HR-600x600.jpg" alt=""><article><p>{{this.straat}}</p><p>{{this.oppervlakte}}</p><p>{{this.huurprijs}}</p></article></a></li>
       {{/each}}
     </ul>
     {{/if}}

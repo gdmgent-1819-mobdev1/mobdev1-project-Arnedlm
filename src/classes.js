@@ -1,5 +1,5 @@
 export class Kot {
-    constructor(huurprijs, waarborg, type, oppervlakte, verdieping, toilet, douche, keuken, meubels, straat, plaats){
+    constructor(huurprijs, waarborg, type, oppervlakte, verdieping, toilet, douche, keuken, meubels, straat, plaats, coordinates){
         this.huurprijs = huurprijs;
         this.waarborg = waarborg;
         this.type = type;

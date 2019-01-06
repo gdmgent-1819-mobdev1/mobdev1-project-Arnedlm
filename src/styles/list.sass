@@ -1,19 +1,19 @@
 .list
     ul, a
-        width: 350px
+        max-width: 350px
         
     ul
         margin: 0 auto
         padding: 30px 0
     li
-        margin: 5px
-
+        margin: 20px 5px
+        box-shadow: 4px 4px rgba(0,0,0,0.1)
         background-color: white
         border-radius: 5px
 
     a
         height: 100px
-        width: 340px
+        max-width: 340px
         display: block
         text-decoration: none
         color: black
@@ -23,11 +23,13 @@
         display: block
         float: left
         width: 100px
-        
+    article
+        float: right    
 
     p
-        float: right
-        width: 235px
+        
+        max-width: 235px
+        
         font-weight: bold
         text-align: right
         padding-right: 5px
@@ -35,16 +37,16 @@
         
     @media screen and (min-width: 600px)
         ul, a
-            width: 700px
+            max-width: 700px
 
         a
             height: 200px
-            width: 690px
+            max-width: 690px
 
         img
             width: 200px
 
         p
-            width: 385px
+            max-width: 385px
             font-size: 20px
             margin: 22px

@@ -1,5 +1,5 @@
 // Only import the compile function from handlebars instead of the entire library
-import { compile } from 'handlebars';
+import handlebars, { compile } from 'handlebars';
 
 // Import the update helper
 import update from '../helpers/update';
@@ -21,28 +21,25 @@ export default () => {
   let loading = true;
   let koten = {};
   let key;
-  const title = 'Firebase calls example';
   // Return the compiled template to the router
-  update(compile(listTemplate)({ title, loading, koten }));
+  update(compile(listTemplate)({loading, koten }));
+
+  //Update header
+  const header = require('../partials/header.handlebars');
+  handlebars.registerPartial('header', compile(header)({title: 'Lijst met koten'}));
+
+
+  document.getElementsByClassName("icon")[0].addEventListener("click", () => { functions.returnClickFunction()})
 
   if (firebase) {
-    // firebase.auth().createUserWithEmailAndPassword('test@test.com', 'test333').catch((error) => {
-    //   // Handle Errors here.
-    //   const errorCode = error.code;
-    //   const errorMessage = error.message;
-    //   console.log(errorCode,errorMessage);
-    // });
-    
-    const database = firebase.database().ref('/koten');
+    //Get data from firebase    
+    const database = firebase.database().ref('koten/');
     database.on('value', (snapshot) => {
-      key = snapshot.key;
       koten = snapshot.val();
       console.log(koten);
       loading = false;   
-          
       // Run the update helper to update the template
-      update(compile(listTemplate)({ title, loading, koten, key }));
+      update(compile(listTemplate)({ loading, koten, key }));
     });
   }
 };
-

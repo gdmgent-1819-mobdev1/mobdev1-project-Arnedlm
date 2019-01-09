@@ -20,16 +20,16 @@ let objKoten = {};
 //Sign up form validation
 export function validateSignupForm() {
   let fname = document.getElementById("signup_fname");
-  fname.addEventListener("input", function (event) { !fname.validity.valid ? fname.className = "error" : fname.className = "" }, false);
+  fname.addEventListener("input", function (event) { !fname.validity.valid ? fname.className = "fail" : fname.className = "" }, false);
   
   let name = document.getElementById("signup_name");
-  name.addEventListener("input", function (event) { !name.validity.valid ? name.className = "error" : name.className = "" }, false);
+  name.addEventListener("input", function (event) { !name.validity.valid ? name.className = "fail" : name.className = "" }, false);
 
   let address = document.getElementById("signup_address");
-  address.addEventListener("input", function (event) { !address.validity.valid ? address.className = "error" : address.className = "" }, false);
+  address.addEventListener("input", function (event) { !address.validity.valid ? address.className = "fail" : address.className = "" }, false);
 
   let phone = document.getElementById("signup_phone");
-  phone.addEventListener("input", function (event) { !phone.validity.valid ? phone.className = "error" : phone.className = "" }, false);
+  phone.addEventListener("input", function (event) { !phone.validity.valid ? phone.className = "fail" : phone.className = "" }, false);
 }
 
 //Sign up

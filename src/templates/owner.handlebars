@@ -1,7 +1,12 @@
 {{> header}}
-<div class="page owner">
+<div class="page list owner">
   <p id="user_info"></p>
   <h2>Mijn kot</h2>
+  <ul class="">
+      {{#each koten}}
+        <li><a href="/detail" data-navigo><img src="http://studentlife.be/wp-content/uploads/2016/05/LIFE_Electri_City_kamer_HR-600x600.jpg" alt=""><article><p>{{this.straat}}</p><p>{{this.oppervlakte}} m²</p><p>€ {{this.huurprijs}}</p></article></a></li>
+      {{/each}}
+  </ul>
   <form id="kot_form" action="">
     <input type="text" name="kot_straat" id="kot_straat" placeholder="Straat + nr" pattern="[A-Za-z0-9]" minlength="2" maxlength="40" required>
     <input type="text" name="kot_plaats" id="kot_plaats" placeholder="Postcode + plaats" pattern="[A-Za-z0-9]" minlength="2" maxlength="30" required>

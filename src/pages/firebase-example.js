@@ -28,9 +28,6 @@ export default () => {
   const header = require('../partials/header.handlebars');
   handlebars.registerPartial('header', compile(header)({title: 'Lijst met koten'}));
 
-
-  document.getElementsByClassName("icon")[0].addEventListener("click", () => { functions.returnClickFunction()})
-
   if (firebase) {
     //Get data from firebase    
     const database = firebase.database().ref('koten/');
@@ -40,6 +37,9 @@ export default () => {
       loading = false;   
       // Run the update helper to update the template
       update(compile(listTemplate)({ loading, koten, key }));
+      document.getElementById('myLinks').innerHTML ="<a href='/student' data-navigo>Dashboard</a>";
+      document.getElementsByClassName("icon")[0].addEventListener("click", () => { functions.menuClickFunction()});
     });
   }
+  
 };

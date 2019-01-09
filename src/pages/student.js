@@ -11,16 +11,16 @@ export default () => {
     //Check user
     functions.checkUserRights("student");  
 
-    // Return the compiled template to the routes
-    update(compile(kotenTemplate)());
-
     //Update header
     const header = require('../partials/header.handlebars');
     handlebars.registerPartial('header', compile(header)({title: 'Dashboard'}));
 
+    // Return the compiled template to the routes
+    update(compile(kotenTemplate)());
+
     //Make navigation
     //Push links
-    document.getElementById('myLinks').innerHTML ="<a href='/lijst' data-navigo>Lijst</a><a href='#contact'>Contact</a><a href='#about'>About</a>";
+    document.getElementById('myLinks').innerHTML ="<a href='/zoeken' data-navigo>Zoeken</a><a href='/lijst' data-navigo>Lijst</a><a href='/map' data-navigo>Kaart</a>";
     //Click event menu
     document.getElementsByClassName("icon")[0].addEventListener("click", () => { functions.menuClickFunction(); });
 

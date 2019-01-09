@@ -13,8 +13,9 @@ const geocodingClient = mbxGeocoding({ accessToken: 'pk.eyJ1IjoiYXJuZWRsbSIsImEi
 const classes = require('./classes');
 
 //global variables
-let arrayCoordinates = [];
-let newKotId = 33448;
+let favo = 1;
+let objKoten = {};
+
 
 //Sign up form validation
 export function validateSignupForm() {
@@ -186,7 +187,7 @@ export function showUserInfo(userInfo){
         if (user) {
           if(user.uid == data.key){
             console.log(data.val());
-            userInfo.innerHTML = data.val().firstName + "(<a id='logout' href='' >Uitloggen</a>)"
+            userInfo.innerHTML = "Welkom " + data.val().firstName + "(<a id='logout' href='' >Uitloggen</a>)"
             document.getElementById('logout').addEventListener("click", () => {firebase.auth().signOut(); router.navigate("/");});
             
           }
@@ -251,14 +252,14 @@ export function addKot(){
   let meubels = document.getElementById('kot_meubels').value;
   
   let kot = new classes.Kot(huurprijs, waarborg, type, opp, verdieping, toilet, douche, keuken, meubels, straat, plaats);
-  
-  firebase.database().ref('koten/' + newKotId).set(kot);
+  let newPostKey = firebase.database().ref().child('koten').push().key;
+  firebase.database().ref('koten/' + newPostKey).set(kot);
   firebase.auth().onAuthStateChanged(function(user) { 
-    firebase.database().ref('userPosts/' + user.uid).set(newKotId);
+    firebase.database().ref('userPosts/' + newPostKey).set(user.uid);
   })
   sendNotification("Uw kot werd succesvol toegevoegd!");
   document.getElementById("kot_form").reset();
-  newKotId++;
+  document.getElementById("kot_form").style.display = "none";
 }
 export function menuClickFunction() {
   let myLinks = document.getElementById("myLinks");
@@ -271,16 +272,35 @@ export function menuClickFunction() {
 export function returnClickFunction(){
   router.navigate('/student');
 }
-export function addDataToSearchGame(){
-  const database = firebase.database().ref('/koten');
+export function addDataToSearchGame(n){
+  let p = new Promise(function(resolve, reject) {
+    
+    const database = firebase.database().ref('/koten');
     database.on('value', (snapshot) => {
-      let koten = snapshot.val();
-      console.log(koten);
-      
-      snapshot.forEach((elem) => {
-        console.log(elem.val().straat);
- 
-        
-      })
+      objKoten = snapshot.val();
+      resolve(objKoten);
     })
-} 
+  });
+  p.then(() => { nextKot(0); console.log("yes")});
+  
+    
+    
+}
+export function nextKot(n){
+  console.log(Object.entries(objKoten).length);
+  if(n < Object.entries(objKoten).length ){
+  document.getElementById("kotStraat").innerHTML = Object.entries(objKoten)[n][1].straat;
+  document.getElementById("kotInfo").innerHTML = "€ " + Object.entries(objKoten)[n][1].huurprijs + ", " + Object.entries(objKoten)[n][1].oppervlakte + " m²";
+  }
+  else{
+    document.getElementById("kotStraat").innerHTML = "Geen koten meer in de buurt";
+    document.getElementById("kotInfo").innerHTML = "";
+  
+  }
+
+}
+export function addToFavorites(n){
+  let favorite = Object.entries(objKoten)[n][0];
+  localStorage.setItem("favo" + favo, favorite);
+  favo++
+}
